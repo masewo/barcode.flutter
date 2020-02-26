@@ -189,5 +189,5 @@ class CodabarBarCodeParams extends BarCodeParams {
   }) : super(data, withText, lineWidth, barHeight, altText);
 
   @override
-  double get barCodeWidth => (data.length + 2) * 13 * lineWidth;
+  double get barCodeWidth => (data.length + 4) * 13 * lineWidth;
 }

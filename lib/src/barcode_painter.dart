@@ -2105,7 +2105,8 @@ class BarCodePainter extends CustomPainter {
       "D": "1010011001"
     };
 
-    final data = params.data;
+    final data = "A" + params.data + "A";
+    final dataText = params.data;
     final lineWidth = params.lineWidth;
     final hasText = params.withText;
 
@@ -2125,7 +2126,7 @@ class BarCodePainter extends CustomPainter {
 
       if (hasError) {
         String errorMsg =
-            "Invalid content for Coddabar. Please check https://en.wikipedia.org/wiki/Codabar for reference.";
+            "Invalid content for Codabar. Please check https://en.wikipedia.org/wiki/Codabar for reference.";
         if (this.onError != null) {
           this.onError(errorMsg);
         } else {
@@ -2148,10 +2149,10 @@ class BarCodePainter extends CustomPainter {
     }
 
     if (hasText) {
-      for (int i = 0; i < data.length; i++) {
+      for (int i = 0; i < dataText.length; i++) {
         TextSpan span = new TextSpan(
             style: new TextStyle(color: Colors.black, fontSize: 15.0),
-            text: data[i]);
+            text: dataText[i]);
         TextPainter textPainter = new TextPainter(
             text: span,
             textAlign: TextAlign.left,
@@ -2160,7 +2161,7 @@ class BarCodePainter extends CustomPainter {
         textPainter.paint(
             canvas,
             new Offset(
-                (size.width - data.length * 13 * lineWidth) / 2 +
+                (size.width - dataText.length * 13 * lineWidth) / 2 +
                     13 * i * lineWidth,
                 height));
       }
